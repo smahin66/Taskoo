@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  body {
+    @apply antialiased bg-gradient-to-br from-violet-50 via-fuchsia-50 to-violet-50 dark:from-dark-900 dark:via-dark-950 dark:to-dark-900 min-h-screen;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-dark-800/80 border border-white/20 dark:border-dark-700/20;
+  }
+
+  .glass-card {
+    @apply bg-white/90 dark:bg-dark-800/90 backdrop-blur-xl border border-white/20 dark:border-dark-700/20 shadow-xl shadow-violet-500/5;
+  }
+
+  .glow-effect {
+    @apply animate-glow;
+  }
+
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:-z-10 before:p-[1px] before:bg-gradient-to-r before:from-violet-500/50 before:to-fuchsia-500/50 before:rounded-[inherit] before:content-[''];
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-600 to-fuchsia-600 dark:from-violet-400 dark:to-fuchsia-400 bg-clip-text text-transparent;
+  }
+
+  .pattern-grid {
+    background-image: linear-gradient(to right, rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .pattern-dots {
+    background-image: radial-gradient(rgba(139, 92, 246, 0.2) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .pixel-corners {
+    clip-path: polygon(
+      0 4px,
+      4px 4px,
+      4px 0,
+      calc(100% - 4px) 0,
+      calc(100% - 4px) 4px,
+      100% 4px,
+      100% calc(100% - 4px),
+      calc(100% - 4px) calc(100% - 4px),
+      calc(100% - 4px) 100%,
+      4px 100%,
+      4px calc(100% - 4px),
+      0 calc(100% - 4px)
+    );
+  }
+
+  .pixel-font {
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+  }
+
+  .bento-grid {
+    @apply grid gap-6 p-6;
+  }
+
+  .bento-card {
+    @apply bg-white/80 dark:bg-violet-950/80 backdrop-blur-xl 
+           border border-violet-200/50 dark:border-violet-700/50 
+           rounded-2xl shadow-md transition-all duration-300
+           hover:shadow-lg hover:border-violet-300/50 dark:hover:border-violet-600/50;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-violet-200 dark:bg-violet-800 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-violet-300 dark:bg-violet-700;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom selection color */
+::selection {
+  @apply bg-violet-500/20 text-violet-900 dark:text-violet-100;
+}
